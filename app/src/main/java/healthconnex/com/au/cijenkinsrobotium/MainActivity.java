@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
     //Show second next Activity
     public void onClickSecondNextButton(View v) {
-        Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(this, SecondDetailActivity.class);
         startActivity(intent);
     }
 }
