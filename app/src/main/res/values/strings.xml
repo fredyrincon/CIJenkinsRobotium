@@ -4,5 +4,8 @@
     <string name="app_name">CIJenkinsRobotium</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="button1">Show next</string>
 
 </resources>
