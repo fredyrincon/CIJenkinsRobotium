@@ -44,7 +44,7 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
 
         // Click a button which will start a new Activity
         // Here we use the ID of the string to find the right button
-        solo.clickOnButton(solo.getString(R.string.button1));
+        solo.clickOnButton(solo.getString(R.string.button2));
 
         // Validate that the Activity is the correct one
         solo.assertCurrentActivity("wrong activity", SecondDetailActivity.class);
