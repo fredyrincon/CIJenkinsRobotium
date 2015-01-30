@@ -20,12 +20,42 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
         solo = new Solo(getInstrumentation(), getActivity());
     }
 
-    @Override
-    public void tearDown() throws Exception {
-        solo.finishOpenedActivities();
+    //Task of click on a button to open another activity and get back
+    public void testPushNextActivity() throws  Exception {
+
+        // check that we have the right activity
+        solo.assertCurrentActivity("wrong activity", MainActivity.class);
+
+        // Click a button which will start a new Activity
+        // Here we use the ID of the string to find the right button
+        solo.clickOnButton(solo.getString(R.string.button1));
+
+        // Validate that the Activity is the correct one
+        solo.assertCurrentActivity("wrong activity", DetailActivity.class);
+
+        solo.goBack();
     }
 
-    public void anotherTest () throws  Exception {
+    //Task of click on a button to open another activity and get back
+    public void testPushSecondNextActivity() throws  Exception {
+
+        // check that we have the right activity
+        solo.assertCurrentActivity("wrong activity", MainActivity.class);
+
+        // Click a button which will start a new Activity
+        // Here we use the ID of the string to find the right button
+        solo.clickOnButton(solo.getString(R.string.button1));
+
+        // Validate that the Activity is the correct one
+        solo.assertCurrentActivity("wrong activity", SecondDetailActivity.class);
+
+        solo.goBack();
+    }
+
+
+
+    /*// Perform test number 1. Test function needs to be called test
+    public void testAnotherTest () throws  Exception {
 
         // check that we have the right activity
         solo.assertCurrentActivity("wrong activity", MainActivity.class);
@@ -49,7 +79,7 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
         assertTrue(solo.waitForText("Blackberry")); // Assertion
         */
 
-        solo.goBack();
+       /* solo.goBack();
        /* solo.clickOnButton("Button2");
         solo.clickOnButton("Button3");*/
 
@@ -62,9 +92,9 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
         solo.enterText(0, "http//:www.vogella.com");
         Assert.assertTrue(solo.searchText("http//:www.vogella.com"));
         solo.goBack();*/
+/*
 
-
-    }
+    }*/
 
    /* @Smoke
     public void testAudit() throws Exception {
@@ -76,4 +106,9 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
 
         solo.goBack();
     }*/
+
+    @Override
+    public void tearDown() throws Exception {
+        solo.finishOpenedActivities();
+    }
 }

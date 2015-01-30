@@ -5,7 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_second_detail">SecondDetailActivity</string>
 
     <string name="button1">Show next</string>
+    <string name="button2">Show second next</string>
 
 </resources>
