@@ -5,6 +5,8 @@ import android.test.suitebuilder.annotation.Smoke;
 
 import com.robotium.solo.Solo;
 
+import org.junit.Assert;
+
 /**
  * Created by frincon on 30/01/2015.
  */
@@ -50,6 +52,14 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
         solo.assertCurrentActivity("wrong activity", SecondDetailActivity.class);
 
         solo.goBack();
+    }
+
+    //Task to change the label of the texdtView
+    public void testChangeLabelData() throws Exception {
+        solo.clickOnButton(solo.getString(R.string.button3));
+        //Assert.assertTrue(solo.searchText("Testing Android Rocks!"));
+
+        assertTrue("No Text found in the activity", solo.searchText("Testing Android Rocks!", true));
     }
 
 

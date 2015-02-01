@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -36,6 +37,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //change the label of the text
+    public  void onClickChangeLabel(View v) {
+        TextView results = (TextView) findViewById(R.id.textView);
+        results.setText("Testing Android Rocks!");
     }
 
     //Show next Activity

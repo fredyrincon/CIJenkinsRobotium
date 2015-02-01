@@ -9,5 +9,6 @@
 
     <string name="button1">Show next</string>
     <string name="button2">Show second next</string>
+    <string name="button3">Change the test</string>
 
 </resources>
