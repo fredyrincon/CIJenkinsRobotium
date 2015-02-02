@@ -25,7 +25,7 @@ import static org.robolectric.Robolectric.shadowOf;
  * Created by frincon on 2/02/2015.
  */
 @RunWith(RobolectricTestRunner.class)
-public class ApplicationRobolectricTest {
+public class ApplicationRobolectricTest  {
 
     private MainActivity activity;
 

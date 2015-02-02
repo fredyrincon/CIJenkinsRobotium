@@ -10,11 +10,11 @@ import org.junit.Assert;
 /**
  * Created by frincon on 30/01/2015.
  */
-public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Solo solo;
 
-    public ApplicationRobotuimTest() {
+    public ApplicationRobotiumTest() {
         super(MainActivity.class);
     }
 
@@ -24,6 +24,8 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
 
     //Task of click on a button to open another activity and get back
     public void testPushNextActivity() throws  Exception {
+
+        solo.takeScreenshot();
 
         // check that we have the right activity
         solo.assertCurrentActivity("wrong activity", MainActivity.class);
@@ -61,6 +63,41 @@ public class ApplicationRobotuimTest extends ActivityInstrumentationTestCase2<Ma
 
         assertTrue("No Text found in the activity", solo.searchText("Testing Android Rocks!", true));
     }
+
+    /*
+    * public void test_login(){
+     solo.enterText(0,username);
+     solo.enterText(1,password);
+     solo.clickOnButton("Login");
+     assertTrue(solo.searchText("Please wait. Logging in."));
+     solo.waitForActivity("com.pointabout.personal.MainTabActivity", 3000);
+     solo.assertCurrentActivity("The activity should be Main Tab", "MainTabActivity");
+     solo.sendKey(Solo.MENU);
+     solo.clickOnText("Logout");
+     solo.waitForText("Are you sure you want to log out");
+     solo.clickOnButton("Logout");
+     solo.waitForText("You have been logged out of Personal.");
+     */
+
+    /**
+     *  public void testPreferenceIsSaved() throws Exception {
+
+     solo.sendKey(Solo.MENU);
+     solo.clickOnText("More");
+     solo.clickOnText("Preferences");
+     solo.clickOnText("Edit File Extensions");
+     Assert.assertTrue(solo.searchText("rtf"));
+
+     solo.clickOnText("txt");
+     solo.clearEditText(2);
+     solo.enterText(2, "robotium");
+     solo.clickOnButton("Save");
+     solo.goBack();
+     solo.clickOnText("Edit File Extensions");
+     Assert.assertTrue(solo.searchText("application/robotium"));
+
+     }
+     */
 
 
 
