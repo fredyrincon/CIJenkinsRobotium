@@ -95,10 +95,10 @@ public class ApplicationRobolectricTest  {
         Activity activity = buildActivity(MainActivity.class).create().start().resume().visible().get();
     }
 
-    @Test
+   /* @Test
     public void testShouldFail() {
         Assert.assertTrue(Boolean.FALSE);
-    }
+    }*/
 
 
 
