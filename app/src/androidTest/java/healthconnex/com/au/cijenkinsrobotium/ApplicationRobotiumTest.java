@@ -64,6 +64,9 @@ public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<Ma
         assertTrue("No Text found in the activity", solo.searchText("Testing Android Rocks!", true));
     }
 
+
+
+
     /*
     * public void test_login(){
      solo.enterText(0,username);
