@@ -37,10 +37,7 @@ public class ApplicationRobolectricTest  {
     public void setUp() {
     }
 
-    @Test
-    public void testShouldFail() {
-        Assert.assertTrue(Boolean.FALSE);
-    }
+
 
 
    /* //Task of click on a button to open another activity and get back
@@ -95,6 +92,15 @@ public class ApplicationRobolectricTest  {
     public void testRoboelectricLifeCycle() throws  Exception {
         Activity activity = Robolectric.buildActivity(MainActivity.class).create().start().resume().visible().get();
     }
+
+    @Test
+    public void testShouldFail() {
+        Assert.assertTrue(Boolean.FALSE);
+    }
+
+
+
+
 
     /*@Test
     public void testClickingButton_shouldChangeResultsViewText() throws Exception {
