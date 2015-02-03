@@ -7,21 +7,18 @@ import android.widget.TextView;
 
 import junit.framework.Assert;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static org.robolectric.Robolectric.buildActivity;
+import static org.robolectric.Robolectric.shadowOf;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.util.ActivityController;
-
-import java_cup.Main;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.robolectric.Robolectric.buildActivity;
-import static org.robolectric.Robolectric.shadowOf;
 
 /**
  * Created by frincon on 2/02/2015.
@@ -31,66 +28,71 @@ public class ApplicationRobolectricTest  {
 
     private MainActivity activity;
 
-    private final ActivityController<MainActivity> controller = buildActivity(MainActivity.class);
+    private Button btnNext;
+    private Button btnSecond;
+    private Button btnChange;
+    private TextView textViewLabel;
+    private SecondDetailActivity secondActivity;
+    private DetailActivity detailActivity;
+
+    //private final ActivityController<MainActivity> controller = buildActivity(MainActivity.class);
 
     @Before
     public void setUp() {
+        activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
+        btnNext = (Button) activity.findViewById(R.id.buttonNext);
+        btnSecond = (Button) activity.findViewById(R.id.buttonSecondNext);
+        btnChange = (Button) activity.findViewById(R.id.buttonChangeText);
+        textViewLabel = (TextView) activity.findViewById(R.id.textView);
     }
 
+    // Sanity check for the layout
+    @Test
+    public void shouldHaveButtonThatSaysShowNext() throws Exception{
+        // Verifies the button and text field exist
+        assertThat(btnNext, notNullValue());
+        assertNotNull(textViewLabel);
+        // Verifies the text of the button
+        assertThat((String) btnNext.getText(), equalTo("Show next"));
+    }
 
-
-
-   /* //Task of click on a button to open another activity and get back
+    //Task of click on a button to open another activity and get back
     public void testRoboelectricPushNextActivity() throws  Exception {
+        //Click the button
+        btnNext.performClick();
 
-        /*Activity activity = Robolectric.buildActivity(MainActivity.class).create().get();
-        Button pressNextButton = (Button) activity.findViewById(R.id.buttonNext);
-        pressNextButton.performClick();
+        // Construct Shadow versions of Activity and Intent
+        Intent startedIntent = shadowOf(activity).getNextStartedActivity();
 
-        Intent expectedIntent = new Intent(activity, DetailActivity.class);
-        assertThat(shadowOf(activity).getNextStartedActivity()).isEqualTo(expectedIntent);
-
-        solo.goBack();*/
-
-
-       /* MainActivity activity = controller.create().start().resume().get();
-        activity.findViewById(R.id.buttonNext).performClick();
-
-        Intent expectedIntent = new Intent(activity, MainActivity.class);
-        assertThat(shadowOf(activity).getNextStartedActivity()).isEqualTo(expectedIntent);
+        // Verify the intent was started with correct result extra
+        //assertThat(resultValue, equalTo(startedIntent.getStringExtra("result")));
+        assertThat(startedIntent.getComponent().getClassName(), equalTo(DetailActivity.class.getName()));
     }
 
     //Task of click on a button to open another activity and get back
     public void testRoboelectricPushSecondNextActivity() throws  Exception {
 
-        // check that we have the right activity
-        solo.assertCurrentActivity("wrong activity", MainActivity.class);
+        //click the button
+        btnChange.performClick();
 
-        // Click a button which will start a new Activity
-        // Here we use the ID of the string to find the right button
-        solo.clickOnButton(solo.getString(R.string.button2));
+        // Construct Shadow versions of Activity and Intent
+        Intent startedIntent = shadowOf(activity).getNextStartedActivity();
 
-        // Validate that the Activity is the correct one
-        solo.assertCurrentActivity("wrong activity", SecondDetailActivity.class);
-
-        solo.goBack();
-    }*/
+        // Verify the intent was started with correct result extra
+        //assertThat(resultValue, equalTo(startedIntent.getStringExtra("result")));
+        assertThat(startedIntent.getComponent().getClassName(), equalTo(SecondDetailActivity.class.getName()));
+    }
 
     //Task to change the label of the textView
     public void testRoboelectricChangeLabelData() throws Exception {
-        Activity activity = Robolectric.buildActivity(MainActivity.class).create().get();
-
-        Button pressChangeLabel = (Button) activity.findViewById(R.id.buttonChangeText);
-        TextView results = (TextView) activity.findViewById(R.id.textView);
-
-        pressChangeLabel.performClick();
-        String resultsText = results.getText().toString();
+        btnChange.performClick();
+        String resultsText = textViewLabel.getText().toString();
         assertThat(resultsText, equalTo("Testing Android Rocks!"));
     }
 
     //Testing lifecycle
     public void testRoboelectricLifeCycle() throws  Exception {
-        Activity activity = Robolectric.buildActivity(MainActivity.class).create().start().resume().visible().get();
+        Activity activity = buildActivity(MainActivity.class).create().start().resume().visible().get();
     }
 
     @Test
