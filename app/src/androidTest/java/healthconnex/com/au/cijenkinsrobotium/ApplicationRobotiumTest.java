@@ -56,7 +56,7 @@ public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<Ma
         solo.goBack();
     }
 
-    //Task to change the label of the texdtView
+    //Task to change the label of the textView
     public void testChangeLabelData() throws Exception {
         solo.clickOnButton(solo.getString(R.string.button3));
         //Assert.assertTrue(solo.searchText("Testing Android Rocks!"));
