@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'robolectric'
+//apply plugin: 'robolectric'
 
 android {
     compileSdkVersion 21
@@ -46,12 +46,12 @@ dependencies {
     compile 'com.squareup.spoon:spoon-client:1.1.2'
 }
 
-robolectric {
+//robolectric {
     // configure the set of classes for JUnit tests
-    include '**/*Test.class'
+ //   include '**/*Test.class'
     //exclude '**/espresso/**/*.class'
 
     // configure max heap size of the test JVM
-    maxHeapSize = "2048m"
-}
+   // maxHeapSize = "2048m"
+//}
 
