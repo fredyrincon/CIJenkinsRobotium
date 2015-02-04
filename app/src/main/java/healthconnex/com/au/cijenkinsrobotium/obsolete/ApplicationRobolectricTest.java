@@ -1,4 +1,4 @@
-package healthconnex.com.au.cijenkinsrobotium;
+package healthconnex.com.au.cijenkinsrobotium.obsolete;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import junit.framework.Assert;
-
+/*
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.robolectric.Robolectric.buildActivity;
@@ -18,14 +18,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.util.ActivityController;
+import org.robolectric.util.ActivityController;*/
+
+import healthconnex.com.au.cijenkinsrobotium.DetailActivity;
+import healthconnex.com.au.cijenkinsrobotium.MainActivity;
+import healthconnex.com.au.cijenkinsrobotium.R;
+import healthconnex.com.au.cijenkinsrobotium.SecondDetailActivity;
 
 /**
  * Created by frincon on 2/02/2015.
  */
-@RunWith(RobolectricTestRunner.class)
+//@RunWith(RobolectricTestRunner.class)
 public class ApplicationRobolectricTest  {
-
+/*
     private MainActivity activity;
 
     private Button btnNext;
@@ -35,21 +40,27 @@ public class ApplicationRobolectricTest  {
     private SecondDetailActivity secondActivity;
     private DetailActivity detailActivity;
 
-    //private final ActivityController<MainActivity> controller = buildActivity(MainActivity.class);
-
     @Before
     public void setUp() {
-
-    }
-
-    /*@Before
-   public void setUp() {
-        activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
+        activity = Robolectric.buildActivity(MainActivity.class).create().get();
         btnNext = (Button) activity.findViewById(R.id.buttonNext);
         btnSecond = (Button) activity.findViewById(R.id.buttonSecondNext);
         btnChange = (Button) activity.findViewById(R.id.buttonChangeText);
         textViewLabel = (TextView) activity.findViewById(R.id.textView);
-    }*/
+    }
+    @Test
+    public void checkActivityNotNull() throws Exception {
+        Assert.assertNotNull(activity);
+    }
+
+    @Test
+    public void buttonClickShouldStartNewActivity() throws Exception
+    {
+        btnNext.performClick();
+        Intent intent = Robolectric.shadowOf(activity).peekNextStartedActivity();
+        Assert.assertEquals(DetailActivity.class.getCanonicalName(), intent.getComponent().getClassName());
+    }
+
 
     /*@Test
     public void testShouldHaveHappySmiles() throws Exception {
@@ -57,16 +68,17 @@ public class ApplicationRobolectricTest  {
         assertThat(hello, equalTo("Hello World!"));
     }*/
 
-   /* // Sanity check for the layout
-    @Test
+   // Sanity check for the layout
+    /*@Test
     public void shouldHaveButtonThatSaysShowNext() throws Exception{
         // Verifies the button and text field exist
-        assertThat(btnNext, notNullValue());
-        assertNotNull(textViewLabel);
+        Assert.assertThat(btnNext, CoreMatchers.notNullValue());
+        Assert.assertNotNull(textViewLabel);
         // Verifies the text of the button
-        assertThat((String) btnNext.getText(), equalTo("Show next"));
+        Assert.assertThat((String) btnNext.getText(), CoreMatchers.equalTo("Show next"));
     }
 
+    /*
     //Task of click on a button to open another activity and get back
     public void testRoboelectricPushNextActivity() throws  Exception {
         //Click the button
