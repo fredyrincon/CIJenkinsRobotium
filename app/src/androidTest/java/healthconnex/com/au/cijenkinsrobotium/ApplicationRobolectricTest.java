@@ -39,14 +39,25 @@ public class ApplicationRobolectricTest  {
 
     @Before
     public void setUp() {
+
+    }
+
+    @Before
+   /* public void setUp() {
         activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
         btnNext = (Button) activity.findViewById(R.id.buttonNext);
         btnSecond = (Button) activity.findViewById(R.id.buttonSecondNext);
         btnChange = (Button) activity.findViewById(R.id.buttonChangeText);
         textViewLabel = (TextView) activity.findViewById(R.id.textView);
+    }*/
+
+    @Test
+    public void testShouldHaveHappySmiles() throws Exception {
+        String hello = new MainActivity().getResources().getString(R.string.hello_world);
+        assertThat(hello, equalTo("Hello World!"));
     }
 
-    // Sanity check for the layout
+   /* // Sanity check for the layout
     @Test
     public void shouldHaveButtonThatSaysShowNext() throws Exception{
         // Verifies the button and text field exist

@@ -11,4 +11,8 @@
     <string name="button2">Show second next</string>
     <string name="button3">Change the test</string>
 
+
+    <string name="hello_world_detail">Hello world detail activity!</string>
+    <string name="hello_world_second">Hello world second activity!</string>
+
 </resources>

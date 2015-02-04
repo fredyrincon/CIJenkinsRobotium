@@ -4,6 +4,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 
 import com.robotium.solo.Solo;
+import com.squareup.spoon.Spoon;
 
 import org.junit.Assert;
 
@@ -12,6 +13,7 @@ import org.junit.Assert;
  */
 public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
+    private MainActivity activity;
     private Solo solo;
 
     public ApplicationRobotiumTest() {
@@ -19,13 +21,17 @@ public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<Ma
     }
 
     public void setUp() throws Exception {
+        super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
+        activity = getActivity();
     }
 
     //Task of click on a button to open another activity and get back
     public void testPushNextActivity() throws  Exception {
 
         solo.takeScreenshot();
+
+        Spoon.screenshot(activity, "initial_state");
 
         // check that we have the right activity
         solo.assertCurrentActivity("wrong activity", MainActivity.class);
@@ -34,14 +40,20 @@ public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<Ma
         // Here we use the ID of the string to find the right button
         solo.clickOnButton(solo.getString(R.string.button1));
 
+        Spoon.screenshot(activity, "click_button");
+
         // Validate that the Activity is the correct one
         solo.assertCurrentActivity("wrong activity", DetailActivity.class);
+
+        solo.takeScreenshot();
 
         solo.goBack();
     }
 
     //Task of click on a button to open another activity and get back
     public void testPushSecondNextActivity() throws  Exception {
+
+        solo.takeScreenshot();
 
         // check that we have the right activity
         solo.assertCurrentActivity("wrong activity", MainActivity.class);
@@ -53,15 +65,22 @@ public class ApplicationRobotiumTest extends ActivityInstrumentationTestCase2<Ma
         // Validate that the Activity is the correct one
         solo.assertCurrentActivity("wrong activity", SecondDetailActivity.class);
 
+        solo.takeScreenshot();
+
         solo.goBack();
     }
 
     //Task to change the label of the textView
     public void testChangeLabelData() throws Exception {
+
+        solo.takeScreenshot();
+
         solo.clickOnButton(solo.getString(R.string.button3));
         //Assert.assertTrue(solo.searchText("Testing Android Rocks!"));
 
         assertTrue("No Text found in the activity", solo.searchText("Testing Android Rocks!", true));
+
+        solo.takeScreenshot();
     }
 
 
