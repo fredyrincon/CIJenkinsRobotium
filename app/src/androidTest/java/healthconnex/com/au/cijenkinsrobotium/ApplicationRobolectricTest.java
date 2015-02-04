@@ -42,8 +42,8 @@ public class ApplicationRobolectricTest  {
 
     }
 
-    @Before
-   /* public void setUp() {
+    /*@Before
+   public void setUp() {
         activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
         btnNext = (Button) activity.findViewById(R.id.buttonNext);
         btnSecond = (Button) activity.findViewById(R.id.buttonSecondNext);
@@ -51,11 +51,11 @@ public class ApplicationRobolectricTest  {
         textViewLabel = (TextView) activity.findViewById(R.id.textView);
     }*/
 
-    @Test
+    /*@Test
     public void testShouldHaveHappySmiles() throws Exception {
         String hello = new MainActivity().getResources().getString(R.string.hello_world);
         assertThat(hello, equalTo("Hello World!"));
-    }
+    }*/
 
    /* // Sanity check for the layout
     @Test
