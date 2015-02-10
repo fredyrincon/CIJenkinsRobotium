@@ -54,6 +54,8 @@ o	Manage >  Plugins (General and commun)
 	Windows Slaves Plugin
 	Green Balls
 	Environment Injector Plugin - EnvInject Plugin
+	Android Lint Plugin
+	HTML Publisher plugin
 
 -	Set the email service ()
 -	 Set up the project to get and commit the source code from the repository
@@ -65,6 +67,8 @@ o	Add Build step
 •	Task: clean app:assembleDebug :app:assembleDebugTest connectedCheck uninstallDebug uninstallDebugTest connectedAndroidTest (check to test in a virtual machine)
 o	Copy the artefacts Post-build
 	**\app\build\outputs\**
+o	Copy the lint
+Export test files as well
 o	Send email in case of failure process.
 
 
@@ -80,5 +84,6 @@ Add client in google console and google play
 Source
 -	http://jenkins-ci.org/
 -	http://www.vogella.com/tutorials/Robotium/article.html
+-	http://blog.zuehlke.com/en/configure-your-android-project-on-jenkins/
 
 
